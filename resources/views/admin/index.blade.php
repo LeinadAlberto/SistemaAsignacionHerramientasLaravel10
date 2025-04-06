@@ -8,33 +8,31 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-3 col-6">
-      <!-- small card -->
-      <div class="small-box bg-white rounded-lg">
-        <div class="inner">
-            <p>Total Usuarios</p>
-            
-            <h3>150</h3>
-        </div>
-        <div class="icon">
-            <div class="fondo">
 
+    <!-- Card Usuarios --> 
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-white rounded-lg">
+            <div class="inner">
+                <p>Total Usuarios</p>
+                <h3>150</h3>
             </div>
-            <i class="fas fa-users" style="color: #8280FF;"></i>
+            <div class="icon">
+                <div class="fondo"></div>
+                <i class="fas fa-users" style="color: #8280FF;"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+                Mas información <i class="fas fa-arrow-circle-right" style="color: #8280FF;"></i>
+            </a>
         </div>
-        <a href="#" class="small-box-footer">
-            Mas información <i class="fas fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    </div>
-    <!-- ./col -->
+    </div><!-- ./col -->
+
     <div class="col-lg-3 col-6">
       <!-- small card -->
       <div class="small-box bg-white rounded-lg">
         <div class="inner">
             <p>Total Herramientas</p>
             
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3>53</h3>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
@@ -66,9 +64,9 @@
       <!-- small card -->
       <div class="small-box bg-white rounded-lg">
         <div class="inner">
-            <p>Herramientas en Mantenimiento</p>
+            <p class="mb-0">Herramientas en <br>Mantenimiento</p>
             
-            <h3>65</h3>
+            <h3 class="mb-0" style="margin-top: 2px">65</h3>
         </div>
         <div class="icon">
           <i class="fas fa-chart-pie"></i>
