@@ -332,13 +332,22 @@ return [
         /* ['header' => 'account_settings'], */
         [
             'text' => 'Principal',
-            'url' => 'admin/settings',
+            'url' => 'admin',
             'icon' => 'nav-icon fas fa-fw fa-user',
         ],
         [
             'text' => 'Roles',
             'icon' => 'nav-icon fas fa-fw fa-user-check',
-            'url' => 'admin/roles',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Roles',
+                    'url' => 'admin/roles',
+                ],
+                [
+                    'text' => 'Crear un Rol',
+                    'url' => 'admin/roles/create',
+                ],
+            ],
         ],
         [
             'text' => 'Usuarios',

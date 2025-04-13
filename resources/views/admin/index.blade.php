@@ -13,8 +13,8 @@
     <div class="col-lg-3 col-6">
         <div class="small-box bg-white rounded-lg">
             <div class="inner">
-                <p>Total Usuarios</p>
-                <h3>150</h3>
+                <p style="color:#8280FF; font-weight: bold;">Total Usuarios</p>
+                <h3>{{ $total_usuarios }}</h3>
             </div>
             <div class="icon">
                 <div class="fondo"></div>
@@ -26,41 +26,41 @@
         </div>
     </div><!-- ./col -->
 
+	<!-- Card Herramientas -->
     <div class="col-lg-3 col-6">
-      <!-- small card -->
-      <div class="small-box bg-white rounded-lg">
-        <div class="inner">
-            <p>Total Herramientas</p>
-            
-            <h3>53</h3>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">
-          Mas información <i class="fas fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    </div>
-    <!-- ./col -->
+		<div class="small-box bg-white rounded-lg">
+        	<div class="inner">
+            	<p style="color: #106165; font-weight: bold;">Total Herramientas</p>
+            	<h3>150</h3>
+        	</div>
+        	<div class="icon">
+          		<div class="fondo" style="background-color: #dce7e8;"></div>
+        		<i class="fas fa-tools" style="color: #106165;"></i>
+        	</div>
+        	<a href="#" class="small-box-footer">
+				Mas información <i class="fas fa-arrow-circle-right" style="color: #106165;"></i>
+        	</a>
+      	</div>
+    </div><!-- ./col -->
+
+	<!-- Card Herramientas Prestadas -->
     <div class="col-lg-3 col-6">
-      <!-- small card -->
-      <div class="small-box bg-white rounded-lg">
-        <div class="inner">
-            <p>Herramientas Prestadas</p>
-            
+		<div class="small-box bg-white rounded-lg">
+			<div class="inner">
+            <p style="color: #651027; font-weight: bold;">Herramientas Prestadas</p>
             <h3>44</h3>
         </div>
         <div class="icon">
-          <i class="fas fa-user-plus"></i>
+			<div class="fondo" style="background-color: #e8dce0;"></div>
+          	<i class="fas fa-toolbox" style="color:#651027;"></i>
         </div>
         <a href="#" class="small-box-footer">
-          Mas información <i class="fas fa-arrow-circle-right"></i>
+          	Mas información <i class="fas fa-arrow-circle-right" style="color: #651027;"></i>
         </a>
       </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
+    </div><!-- ./col -->
+
+    {{-- <div class="col-lg-3 col-6">
       <!-- small card -->
       <div class="small-box bg-white rounded-lg">
         <div class="inner">
@@ -75,9 +75,9 @@
           Mas información <i class="fas fa-arrow-circle-right"></i>
         </a>
       </div>
-    </div>
+    </div> --}}
     <!-- ./col -->
-    <div class="col-lg-3 col-6">
+    {{-- <div class="col-lg-3 col-6">
       <!-- small card -->
       <div class="small-box bg-white rounded-lg">
         <div class="inner">
@@ -92,7 +92,7 @@
           Mas información <i class="fas fa-arrow-circle-right"></i>
         </a>
       </div>
-    </div>
+    </div> --}}
     <!-- ./col -->
   </div>
 @stop
@@ -122,6 +122,17 @@
             right: 9px;
             border-radius: 25%;
         }
+
+		.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+            background-color: #DF8129;
+            color: #fff;
+        }
+		/* .page-item.active .page-link {
+            z-index: 3;
+            color: #fff;
+            background-color: #DF8129;
+            border-color:#DF8129;
+        } */
     </style>
 @stop
 

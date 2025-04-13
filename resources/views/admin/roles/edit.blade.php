@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Roles / Modificar datos del Rol</h1>
+    <h1 class="text-center">EDITAR ROL</h1>
     <hr>
 @stop
 
 @section('content')
 
     <div class="row"> 
-        
+        <div class="col-md-4"></div>
         <div class="col-md-4">
 
             <div class="card card-outline card-success">
@@ -35,7 +35,7 @@
                                     <label for="">Nombre del Rol <span class="text-danger">*</span></label>
                                     <div class="input-group mb-1">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-user-check text-info"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-user-check text-success"></i></span>
                                         </div>
                                         <input name="name" type="text" class="form-control" value="{{ $rol->name }}" placeholder="Escriba aqui..." required>
                                     </div>
@@ -64,12 +64,15 @@
             </div><!-- /.card -->
 
         </div><!-- /.col-md-4 --> 
-
+        <div class="col-md-4"></div>
     </div><!-- /.row --> 
 
 @stop
 
 @section('css')  
+    <style>
+        
+    </style>
 @stop
 
 

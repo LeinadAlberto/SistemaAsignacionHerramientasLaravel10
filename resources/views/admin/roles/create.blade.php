@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Roles / Registro de un nuevo Rol</h1>
+    <h1 class="text-center">CREAR NUEVO ROL</h1>
     <hr>
 @stop
 
@@ -9,6 +9,7 @@
 
     <div class="row"> 
         
+        <div class="col-md-4"></div>
         <div class="col-md-4">
 
             <div class="card card-outline card-info">
@@ -62,6 +63,7 @@
             </div><!-- /.card -->
 
         </div><!-- /.col-md-4 --> 
+        <div class="col-md-4"></div>
 
     </div><!-- /.row --> 
 
@@ -72,6 +74,24 @@
         .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
             background-color: #DF8129;
             color: #fff;
+        }
+
+        .card-info.card-outline {
+            border-top:3px solid #DF8129;
+        }
+        .btn-info {
+            background-color: #DF8129;
+            border:none;
+        }
+
+        .text-info {
+            color: #DF8129 !important;
+        }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: #91541b;
+            border-color:#8f4d0f;
         }
     </style>
 @stop
