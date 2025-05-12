@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Usuarios / Modificar datos del Usuario</h1>
+    <h1 class="text-center">EDITAR USUARIO</h1>
     <hr>
 @stop
 
@@ -9,7 +9,9 @@
 
     <div class="row"> 
         
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
 
             <div class="card card-outline card-success">
 
@@ -27,9 +29,9 @@
 
                         @method('PUT')
 
-                        <!-- Nombre del Rol -->
+                        <!-- Nombre del Rol y Nombre del Usuario-->
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Rol <span class="text-danger">*</span></label>
                                     <div class="input-group mb-1">
@@ -47,12 +49,9 @@
                                         </select>
                                     </div>
                                 </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
+                            </div><!-- /.col-md-6 -->
 
-                        <!-- Nombre del Usuario -->
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Nombre del Usuario <span class="text-danger">*</span></label>
                                     <div class="input-group mb-1">
@@ -65,7 +64,40 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
+                            </div><!-- /.col-md-6 -->
+                        </div><!-- /.row -->
+
+                        <!-- Contraseña y Repetir Contraseña-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Contraseña <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock text-success"></i></span>
+                                        </div>
+                                        <input name="password" type="password" class="form-control" placeholder="Escriba aqui...">
+                                    </div>
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Repetir Contraseña <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock text-success"></i></span>
+                                        </div>
+                                        <input name="password_confirmation" type="password" class="form-control" placeholder="Escriba aqui...">
+                                    </div>
+                                    @error('password_confirmation')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror 
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
                         </div><!-- /.row -->
 
                         <!-- Correo Electrónico -->
@@ -85,45 +117,10 @@
                                 </div><!-- /.form-group -->
                             </div><!-- /.col-md-12 -->
                         </div><!-- /.row -->
-
-                        <!-- Contraseña -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Contraseña <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-success"></i></span>
-                                        </div>
-                                        <input name="password" type="password" class="form-control" placeholder="Escriba aqui...">
-                                    </div>
-                                    @error('password')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-
-                        <!-- Repetir Contraseña -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Repetir Contraseña <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-success"></i></span>
-                                        </div>
-                                        <input name="password_confirmation" type="password" class="form-control" placeholder="Escriba aqui...">
-                                    </div>
-                                    @error('password_confirmation')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror 
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-
+                    
                         <hr>
 
+                        <!-- Botones de Cancelar y Modificar -->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -132,6 +129,7 @@
                                 </div>
                             </div><!-- col-md-12 -->
                         </div><!-- /.row -->
+
                     </form>
                     
                 </div><!-- /.card-body --> 
@@ -139,6 +137,8 @@
             </div><!-- /.card -->
 
         </div><!-- /.col-md-4 --> 
+
+        <div class="col-md-2"></div>
 
     </div><!-- /.row --> 
 

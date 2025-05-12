@@ -351,8 +351,31 @@ return [
         ],
         [
             'text' => 'Usuarios',
-            'url' => 'admin/usuarios',
-            'icon' => 'nav-icon fas fa-fw fa-user',
+            'icon' => 'nav-icon fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Usuarios',
+                    'url' => 'admin/usuarios',
+                ],
+                [
+                    'text' => 'Crear un Usuario',
+                    'url' => 'admin/usuarios/create',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Categorías',
+            'icon' => 'nav-icon fas fa-fw fa-tags',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Categorías',
+                    'url' => 'admin/categorias',
+                ],
+                [
+                    'text' => 'Crear una Categoría',
+                    'url' => 'admin/categorias/create',
+                ],
+            ],
         ],
         [
             'text' => 'Herramientas',

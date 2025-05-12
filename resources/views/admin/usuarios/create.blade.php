@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Usuarios / Registro de un nuevo Usuario</h1>
+    <h1 class="text-center">CREAR NUEVO USUARIO</h1>
     <hr>
 @stop
 
@@ -9,7 +9,9 @@
 
     <div class="row"> 
         
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
 
             <div class="card card-outline card-info">
 
@@ -25,9 +27,9 @@
                         
                         @csrf
 
-                        <!-- Nombre del Rol -->
+                        <!-- Nombre del Rol y Nombre del Usuario -->
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Rol <span class="text-danger">*</span></label>
                                     <div class="input-group mb-1">
@@ -42,12 +44,9 @@
                                         </select>
                                     </div>
                                 </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
+                            </div><!-- /.col-md-6 -->
 
-                        <!-- Nombre del Usuario -->
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Nombre del Usuario <span class="text-danger">*</span></label>
                                     <div class="input-group mb-1">
@@ -60,7 +59,40 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
+                            </div><!-- /.col-md-6 -->
+                        </div><!-- /.row -->
+
+                        <!-- Contraseña y Repetir Contraseña-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Contraseña <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
+                                        </div>
+                                        <input name="password" type="password" class="form-control" placeholder="Escriba aqui..." required>
+                                    </div>
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Repetir Contraseña <span class="text-danger">*</span></label>
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
+                                        </div>
+                                        <input name="password_confirmation" type="password" class="form-control" placeholder="Escriba aqui..." required>
+                                    </div>
+                                    @error('password_confirmation')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror 
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
                         </div><!-- /.row -->
 
                         <!-- Correo Electrónico -->
@@ -80,45 +112,10 @@
                                 </div><!-- /.form-group -->
                             </div><!-- /.col-md-12 -->
                         </div><!-- /.row -->
-
-                        <!-- Contraseña -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Contraseña <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
-                                        </div>
-                                        <input name="password" type="password" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('password')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-
-                        <!-- Repetir Contraseña -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Repetir Contraseña <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
-                                        </div>
-                                        <input name="password_confirmation" type="password" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('password_confirmation')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror 
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-
+ 
                         <hr>
 
+                        <!-- Botones de Cancelar y Registrar -->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -127,6 +124,7 @@
                                 </div>
                             </div><!-- col-md-12 -->
                         </div><!-- /.row -->
+
                     </form>
                     
                 </div><!-- /.card-body --> 
@@ -135,11 +133,37 @@
 
         </div><!-- /.col-md-4 --> 
 
+        <div class="col-md-2"></div>
+
     </div><!-- /.row --> 
 
 @stop
 
-@section('css')  
+@section('css') 
+    <style>
+        .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+            background-color: #DF8129;
+            color: #fff;
+        }
+
+        .card-info.card-outline {
+            border-top:3px solid #DF8129;
+        }
+        .btn-info {
+            background-color: #DF8129;
+            border:none;
+        }
+
+        .text-info {
+            color: #DF8129 !important;
+        }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: #91541b;
+            border-color:#8f4d0f;
+        }
+    </style>
 @stop
 
 

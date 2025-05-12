@@ -12,6 +12,8 @@ class RoleController extends Controller
 
         $roles = Role::all();
 
+        /* return response()->json($roles);  */
+
         return view('admin.roles.index', compact('roles'));
     }
 

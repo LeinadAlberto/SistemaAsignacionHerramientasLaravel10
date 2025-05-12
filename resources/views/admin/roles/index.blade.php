@@ -9,6 +9,7 @@
 
     <div class="row"> 
         <div class="col-md-2"></div>
+
         <div class="col-md-8">
 
             <div class="card card-outline card-info">
@@ -99,7 +100,8 @@
 
             </div><!-- /.card -->
 
-        </div><!-- /.col-md-12 --> 
+        </div><!-- /.col-md-8 --> 
+
         <div class="col-md-2"></div>
     </div><!-- /.row --> 
 
@@ -132,7 +134,6 @@
         .btn-info { background-color: #17A2B8; border: none; }
         .btn-warning { background-color: #FFC107; color: #212529; border: none; }
         .btn-default { background-color: #6E7176; color: #212529; border: none; }
-
         .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
             background-color: #DF8129;
             color: #fff;
@@ -159,7 +160,6 @@
             background-color: #DF8129;
             border-color:#DF8129;
         }
-
         link {
             position: relative;
             display: block;
@@ -170,7 +170,6 @@
             background-color: #fff;
             border: 1px solid #dee2e6;
         }
-
         .page-link {
             position: relative;
             display: block;
@@ -181,7 +180,6 @@
             background-color: #fff;
             border: 1px solid #dee2e6;
         }
-
         .page-link:hover {
             z-index: 2;
             color: #DF8129;
