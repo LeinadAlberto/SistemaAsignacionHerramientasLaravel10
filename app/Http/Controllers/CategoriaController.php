@@ -63,7 +63,7 @@ class CategoriaController extends Controller
         return response()->json($datos); */
 
         $request->validate([
-            'nombre' => 'required|unique:categorias',
+            'nombre' => 'required|unique:categorias,nombre,' . $id,
             'descripcion' => 'required'
         ]);
 
@@ -72,16 +72,25 @@ class CategoriaController extends Controller
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
         
+        $categoria = Categoria::find($id);
+
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+
         $categoria->save();
 
         return redirect()->route("admin.categoria.index")
-            ->with("mensaje", "Registro exitoso")
+            ->with("mensaje", "Modificación exitosa")
             ->with("icono", "success");
 
     }
 
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        
+        Categoria::destroy($id);
+
+        return redirect()->route("admin.categoria.index")
+        ->with("mensaje", "Registro eliminado exitosamente")
+        ->with("icono", "success");
     }
 }

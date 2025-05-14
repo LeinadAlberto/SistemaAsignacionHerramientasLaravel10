@@ -76,3 +76,19 @@ Route::put('/admin/categorias/{id}', [App\Http\Controllers\CategoriaController::
 ->name('admin.categoria.update')->middleware('auth');
 Route::delete('/admin/categorias/{id}', [App\Http\Controllers\CategoriaController::class, 'destroy'])
 ->name('admin.categoria.destroy')->middleware('auth');
+
+// Rutas para Herramientas
+Route::get('/admin/herramientas', [App\Http\Controllers\HerramientaController::class, 'index'])
+->name('admin.herramienta.index')->middleware('auth');
+Route::get('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'create'])
+->name('admin.herramienta.create')->middleware('auth');
+Route::post('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'store'])
+->name('admin.herramienta.store')->middleware('auth');
+Route::get('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaController::class, 'show'])
+->name('admin.herramienta.show')->middleware('auth');
+Route::get('/admin/herramientas/{id}/edit', [App\Http\Controllers\HerramientaController::class, 'edit'])
+->name('admin.herramienta.edit')->middleware('auth');
+Route::put('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaController::class, 'update'])
+->name('admin.herramienta.update')->middleware('auth');
+Route::delete('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaController::class, 'destroy'])
+->name('admin.herramienta.destroy')->middleware('auth');

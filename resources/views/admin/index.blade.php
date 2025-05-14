@@ -9,19 +9,53 @@
 @section('content')
 <div class="row">
 
+    <!-- Card Roles --> 
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-white rounded-lg">
+            <div class="inner">
+                <p style="color:rgb(89, 14, 155); font-weight: bold;">Total Roles</p>
+                <h3>{{ $total_roles }}</h3>
+            </div>
+            <div class="icon">
+                <div class="fondo" style="background-color: rgb(217, 185, 245);"></div>
+                <i class="fas fa-fw fa-user-check" style="color:rgb(89, 14, 155);"></i>
+            </div>
+            <a href="{{ url('admin/roles') }}" class="small-box-footer">
+                Mas información <i class="fas fa-arrow-circle-right" style="color:rgb(89, 14, 155);"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+
     <!-- Card Usuarios --> 
     <div class="col-lg-3 col-6">
         <div class="small-box bg-white rounded-lg">
             <div class="inner">
-                <p style="color:#8280FF; font-weight: bold;">Total Usuarios</p>
+                <p style="color: rgb(13, 10, 175); font-weight: bold;">Total Usuarios</p>
                 <h3>{{ $total_usuarios }}</h3>
             </div>
             <div class="icon">
                 <div class="fondo"></div>
-                <i class="fas fa-users" style="color: #8280FF;"></i>
+                <i class="fas fa-fw fa-users" style="color:rgb(13, 10, 175);"></i>
             </div>
-            <a href="#" class="small-box-footer">
-                Mas información <i class="fas fa-arrow-circle-right" style="color: #8280FF;"></i>
+            <a href="{{ url('admin/usuarios') }}" class="small-box-footer">
+                Mas información <i class="fas fa-arrow-circle-right" style="color: rgb(13, 10, 175);"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+
+    <!-- Card Categorías --> 
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-white rounded-lg">
+            <div class="inner">
+                <p style="color:rgb(176, 56, 98); font-weight: bold;">Total Categorías</p>
+                <h3>{{ $total_categorias }}</h3>
+            </div>
+            <div class="icon">
+                <div class="fondo" style="background-color: rgb(218, 194, 202);"></div>
+                <i class="fas fa-fw fa-tags" style="color:rgb(179, 25, 78);"></i>
+            </div>
+            <a href="{{ url('/admin/categorias') }}" class="small-box-footer">
+                Mas información <i class="fas fa-arrow-circle-right" style="color: rgb(176, 56, 98);"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -31,19 +65,19 @@
 		<div class="small-box bg-white rounded-lg">
         	<div class="inner">
             	<p style="color: #106165; font-weight: bold;">Total Herramientas</p>
-            	<h3>150</h3>
+            	<h3>{{ $total_herramientas }}</h3>
         	</div>
         	<div class="icon">
           		<div class="fondo" style="background-color: #dce7e8;"></div>
         		<i class="fas fa-tools" style="color: #106165;"></i>
         	</div>
-        	<a href="#" class="small-box-footer">
+        	<a href="{{ url('/admin/herramientas') }}" class="small-box-footer">
 				Mas información <i class="fas fa-arrow-circle-right" style="color: #106165;"></i>
         	</a>
       	</div>
     </div><!-- ./col -->
 
-	<!-- Card Herramientas Prestadas -->
+	{{-- <!-- Card Herramientas Prestadas -->
     <div class="col-lg-3 col-6">
 		<div class="small-box bg-white rounded-lg">
 			<div class="inner">
@@ -58,7 +92,7 @@
           	Mas información <i class="fas fa-arrow-circle-right" style="color: #651027;"></i>
         </a>
       </div>
-    </div><!-- ./col -->
+    </div><!-- ./col --> --}}
 
     {{-- <div class="col-lg-3 col-6">
       <!-- small card -->

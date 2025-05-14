@@ -379,10 +379,19 @@ return [
         ],
         [
             'text' => 'Herramientas',
-            'url' => 'admin/herramientas',
-            'icon' => 'nav-icon fas fa-fw fa-user',
+            'icon' => 'nav-icon fas fa-tools',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Herramientas',
+                    'url' => 'admin/herramientas',
+                ],
+                [
+                    'text' => 'Crear una Herramienta',
+                    'url' => 'admin/herramientas/create',
+                ],
+            ],
         ],
-        [
+        /* [
             'text' => 'Préstamos',
             'url' => 'admin/prestamos',
             'icon' => 'nav-icon fas fa-fw fa-user',
@@ -396,7 +405,7 @@ return [
             'text' => 'Reportes',
             'url' => 'admin/reportes',
             'icon' => 'nav-icon fas fa-fw fa-user',
-        ],
+        ], */
         /* [
             'text' => 'profile',
             'url' => 'admin/settings',

@@ -29,7 +29,7 @@ class RoleController extends Controller
         return response()->json($datos); */
 
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:roles'
         ]);
 
         $rol = new Role();
@@ -61,7 +61,7 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:roles,name,'. $id
         ]);
 
         $rol = Role::find($id);
