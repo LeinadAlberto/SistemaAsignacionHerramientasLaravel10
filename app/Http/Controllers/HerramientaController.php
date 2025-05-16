@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Herramienta;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class HerramientaController extends Controller
@@ -16,7 +17,9 @@ class HerramientaController extends Controller
 
     public function create()
     {
-        return view('admin.herramientas.create');
+        $categorias = Categoria::all();
+
+        return view('admin.herramientas.create', compact('categorias'));
     }
 
     public function store(Request $request)

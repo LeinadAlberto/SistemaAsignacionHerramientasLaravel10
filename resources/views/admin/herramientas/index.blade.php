@@ -29,18 +29,14 @@
                     <table id="example1" class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr class="text-center text-white" style="background-color: #343A40">
-                                {{-- <th>Nro</th> --}}
+                                <th>Nro</th>
                                 <th>Categoría</th>
-                                <th>Item</th>
-                                <th>Fecha de Ingreso</th>
-                                <th>Medida</th>
-                                <th>Cantidad</th>
-                                <th>Detalle</th>
-                                {{-- <th>Código</th> --}}
+                                <th>Código</th>
+                                <th>Nombre</th>
                                 <th>Marca</th>
-                                <th>Ubicación</th>
-                                <th>Estado</th>
-                                {{-- <th>Observación</th> --}}
+                                <th>Medida</th>
+                                <th>Imágen</th>
+                                <th>Stock</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -60,11 +56,7 @@
                                     {{-- <td class="align-middle">{{ $herramienta->codigo }}</td> --}}
                                     <td class="align-middle">{{ $herramienta->marca }}</td>
                                     <td class="align-middle text-center">{{ $herramienta->ubicacion }}</td>
-                                    <td class="align-middle text-center">
-    <span class="estado-badge estado-{{ strtolower($herramienta->estado) }}">
-        {{ $herramienta->estado }}
-    </span>
-</td>
+                                   
                                     {{-- <td class="align-middle">{{ $herramienta->observacion }}</td> --}}
                                     
                                     <!-- Botones Ver, Editar y Eliminar -->
