@@ -35,29 +35,27 @@
                                 <th>Nombre</th>
                                 <th>Marca</th>
                                 <th>Medida</th>
-                                <th>Imágen</th>
                                 <th>Stock</th>
+                                <th>Imágen</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @php
+                            @php
                                 $contador = 1;
-                            @endphp --}}
+                            @endphp
                             @foreach ($herramientas as $herramienta)
                                 <tr>
-                                    {{-- <td class="text-center align-middle">{{ $contador++ }}</td> --}}
+                                    <td class="text-center align-middle">{{ $contador++ }}</td>
                                     <td class="align-middle">{{ $herramienta->categoria->nombre }}</td>
-                                    <td class="align-middle">{{ $herramienta->item }}</td>
-                                    <td class="align-middle">{{ $herramienta->fecha_ingreso }}</td>
-                                    <td class="align-middle">{{ $herramienta->medida }}</td>
-                                    <td class="align-middle">{{ $herramienta->cantidad }}</td>
-                                    <td class="align-middle">{{ $herramienta->detalle }}</td>
-                                    {{-- <td class="align-middle">{{ $herramienta->codigo }}</td> --}}
+                                    <td class="align-middle">{{ $herramienta->codigo }}</td>
+                                    <td class="align-middle">{{ $herramienta->nombre }}</td>
                                     <td class="align-middle">{{ $herramienta->marca }}</td>
-                                    <td class="align-middle text-center">{{ $herramienta->ubicacion }}</td>
-                                   
-                                    {{-- <td class="align-middle">{{ $herramienta->observacion }}</td> --}}
+                                    <td class="align-middle">{{ $herramienta->medida }}</td>
+                                    <td class="align-middle text-center">{{ $herramienta->stock }}</td>
+                                    <td class="align-middle">
+                                        <img src="{{ asset('storage/' . $herramienta->imagen ) }}" width="60px" alt="">
+                                    </td>
                                     
                                     <!-- Botones Ver, Editar y Eliminar -->
                                     <td class="text-center align-middle">

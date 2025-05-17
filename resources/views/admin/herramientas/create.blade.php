@@ -27,109 +27,180 @@
                         
                         @csrf
 
-                        <!-- Categoría, Código,  -->
                         <div class="row">
-                            <!-- Nombre de la Herramienta -->
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre de la Herramienta <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-tools text-info"></i></span>
-                                        </div>
-                                        <input name="nombre" id="nombre" type="text" value="{{ old('nombre') }}" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('nombre')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
+                            <!-- Nombre, Categoría, Descripción, Código, Marca, Medida, Stock -->
+                            <div class="col-md-8">
+                                <!-- Nombre, Categoría -->
+                                <div class="row">
+                                    <!-- Nombre de la Herramienta -->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre de la Herramienta <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-tools text-info"></i></span>
+                                                </div>
+                                                <input name="nombre" id="nombre" type="text" value="{{ old('nombre') }}" class="form-control" placeholder="Escriba aqui..." required>
+                                            </div>
+                                            @error('nombre')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-7 -->
 
-                            <!-- Categoría -->
+                                    <!-- Categoría -->
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="categoria_id">Categoría <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-tags text-info"></i></span>
+                                                </div>
+                                                <select id="categoria_id" name="categoria_id" class="form-control" required>
+                                                    <option>Seleccionar...</option>
+                                                    @foreach ($categorias as $categoria)
+                                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-5 -->
+                                </div><!-- /.row -->
+
+                                <!-- Descripción, Código -->
+                                <div class="row">
+                                    <!-- Descripción-->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label for="descripcion">Descripción</label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-sticky-note text-info"></i></span>
+                                                </div>
+                                                <input name="descripcion" id="descripcion" type="text" value="{{ old('descripcion') }}" class="form-control" placeholder="Escriba aqui...">
+                                            </div>
+                                            @error('descripcion')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-7 -->
+                                    
+                                    <!-- Código -->
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="codigo">Código <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-barcode text-info"></i></span>
+                                                </div>
+                                                <input name="codigo" id="codigo" type="number" value="{{ old('codigo') }}" class="form-control" placeholder="Escriba aqui...">
+                                            </div>
+                                            @error('codigo')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-5 -->
+                                </div><!-- /.row -->
+
+                                <!-- Marca, Medida, Stock -->
+                                <div class="row">
+                                    <!-- Marca -->
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="marca">Marca</label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fab fa-bandcamp text-info"></i></span>
+                                                </div>
+                                                <input name="marca" id="marca" type="text" value="{{ old('marca') }}" class="form-control" placeholder="Escriba aqui...">
+                                            </div>
+                                            @error('marca')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-5 -->
+
+                                    <!-- Medida -->
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="medida">Medida</label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-ruler text-info"></i></span>
+                                                </div>
+                                                <input name="medida" id="medida" type="text" value="{{ old('medida') }}" class="form-control" placeholder="Escriba aqui...">
+                                            </div>
+                                            @error('medida')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-5 -->
+
+                                    <!-- Stock -->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="stock">Stock</label>
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-cubes text-info"></i></span>
+                                                </div>
+                                                <input name="stock" id="stock" type="number" value="{{ old('stock', 0) }}" class="form-control" placeholder="0">
+                                            </div>
+                                            @error('stock')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-2 -->
+                                </div><!-- /.row -->
+                            </div><!-- /.col-md-8 -->
+
+                            <!-- Imágen -->
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="categoria">Categoría <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-tags text-info"></i></span>
-                                        </div>
-                                        <select id="categoria" name="categoria" class="form-control" required>
-                                            <option>Seleccionar...</option>
-                                            @foreach ($categorias as $categoria)
-                                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-3 -->
+                                <div class="row">
+                                    <!-- Imágen -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="file">Imagen</label>
+                                            
+                                            <input type="file" id="file" name="imagen" accept=".jpg,.jpeg,.png" class="form-control">
+                                            
+                                            @error('imagen')
+                                                <small style="...">{{ $message }}</small>
+                                            @enderror
+                            
+                                            <br>
 
-                            <!-- Código -->
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="codigo">Código <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-barcode text-info"></i></span>
-                                        </div>
-                                        <input name="codigo" id="codigo" type="text" value="{{ old('codigo') }}" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('name')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-3 -->
+                                            <center>
+                                                <output id="list"></output>
+                                            </center>
+
+                                            <script>
+                                                function archivo(evt) {
+                                                    var files = evt.target.files; //FileList object
+                                                    // Obtenemos la imagen del campo "file".
+                                                    for (var i = 0, f; f = files[i]; i++) {
+                                                        // Solo admitimos imágenes.
+                                                        if (!f.type.match('image.*')) {
+                                                            continue;
+                                                        }
+                                                        var reader = new FileReader();
+                                                        reader.onload = (function (theFile) {
+                                                            return function (e) {
+                                                                // Insertamos la imagen
+                                                                document.getElementById("list").innerHTML = ['<img class="thumb thumbnail" src="',e.target.result, '" width="70%" title="', escape(theFile.name), '"/>'].join('');
+                                                            };
+                                                        }) (f);
+                                                        reader.readAsDataURL(f);
+                                                    }
+                                                }
+                                                document.getElementById('file').addEventListener('change', archivo, false);
+                                            </script>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-3 -->
+                                </div><!-- /.row -->
+                            </div><!-- /.col-md-4 -->
                         </div><!-- /.row -->
-
-                        <!-- Contraseña y Repetir Contraseña-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Descripción</label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
-                                        </div>
-                                        <input name="password" type="password" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('password')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Repetir Contraseña <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-lock text-info"></i></span>
-                                        </div>
-                                        <input name="password_confirmation" type="password" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('password_confirmation')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror 
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-                        </div><!-- /.row -->
-
-                        <!-- Correo Electrónico -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Correo Electrónico <span class="text-danger">*</span></label>
-                                    <div class="input-group mb-1">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-envelope text-info"></i></span>
-                                        </div>
-                                        <input name="email" type="email" class="form-control" placeholder="Escriba aqui..." required>
-                                    </div>
-                                    @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div><!-- /.form-group -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
+                        
  
                         <hr>
 

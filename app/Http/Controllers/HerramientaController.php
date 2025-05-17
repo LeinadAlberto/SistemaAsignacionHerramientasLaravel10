@@ -24,7 +24,34 @@ class HerramientaController extends Controller
 
     public function store(Request $request)
     {
+        /* $datos = request()->all();
+
+        return response()->json($datos); */
+
+        $request->validate([
+            'codigo' => 'required|unique:herramientas',
+            'nombre' => 'required'
+        ]);
+
+        $herramienta = new Herramienta();
+
+        $herramienta->categoria_id = $request->categoria_id;
+        $herramienta->codigo = $request->codigo;
+        $herramienta->nombre = $request->nombre;
+        $herramienta->descripcion = $request->descripcion;
+        $herramienta->marca = $request->marca;
+        $herramienta->medida = $request->medida;
+        $herramienta->stock = $request->stock;
         
+        if ($request->hasFile('imagen')) {
+            $herramienta->imagen = $request->file('imagen')->store('herramientas', 'public');
+        }
+
+        $herramienta->save();
+
+        return redirect()->route("admin.herramienta.index")
+            ->with("mensaje", "Registro exitoso")
+            ->with("icono", "success");
     }
 
     public function show(Herramienta $herramienta)
