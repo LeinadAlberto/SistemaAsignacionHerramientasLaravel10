@@ -92,3 +92,7 @@ Route::put('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaControll
 ->name('admin.herramienta.update')->middleware('auth');
 Route::delete('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaController::class, 'destroy'])
 ->name('admin.herramienta.destroy')->middleware('auth');
+
+// Rutas para Inventarios
+Route::get('/admin/inventarios', [App\Http\Controllers\InventarioController::class, 'index'])
+->name('admin.inventario.index')->middleware('auth');

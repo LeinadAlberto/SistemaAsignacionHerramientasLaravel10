@@ -391,6 +391,16 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Inventario',
+            'icon' => 'nav-icon fas fa-dolly-flatbed',
+            'submenu' => [
+                [
+                    'text' => 'Entradas de Herramientas',
+                    'url' => 'admin/inventarios',
+                ]
+            ],
+        ],
         /* [
             'text' => 'Préstamos',
             'url' => 'admin/prestamos',

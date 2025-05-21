@@ -26,7 +26,7 @@
                 
                 <div class="card-body">
 
-                    <table id="example1" class="table table-bordered table-hover table-striped">
+                    <table id="example1" class="table table-bordered table-hover ">
                         <thead>
                             <tr class="text-center text-white" style="background-color: #343A40">
                                 <th>Nro</th>
@@ -52,9 +52,11 @@
                                     <td class="align-middle">{{ $herramienta->nombre }}</td>
                                     <td class="align-middle">{{ $herramienta->marca }}</td>
                                     <td class="align-middle">{{ $herramienta->medida }}</td>
-                                    <td class="align-middle text-center">{{ $herramienta->stock }}</td>
-                                    <td class="align-middle">
-                                        <img src="{{ asset('storage/' . $herramienta->imagen ) }}" width="60px" alt="">
+                                    <td class="align-middle text-center" style="font-size: 20px;">
+                                        <span class="badge badge-warning p-2">{{ $herramienta->stock }}</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <img src="{{ asset('storage/' . $herramienta->imagen ) }}" width="60px" alt="Imágen herramienta">
                                     </td>
                                     
                                     <!-- Botones Ver, Editar y Eliminar -->
@@ -63,15 +65,17 @@
                                             <!-- Boton Ver -->
                                             <a href="{{ url('/admin/herramientas/' . $herramienta->id) }}" 
                                                 class="btn btn-sm btn-info" 
-                                                style="border-radius: 4px 0px 0px 4px">
-                                                <i class="fas fa-eye" title="Ver"></i>
+                                                style="border-radius: 4px 0px 0px 4px"
+                                                title="Ver">
+                                                <i class="fas fa-eye"></i>
                                             </a>
 
                                             <!-- Boton Editar -->
                                             <a href="{{ url('/admin/herramientas/' . $herramienta->id . '/edit') }}" 
                                                 class="btn btn-sm btn-success" 
-                                                style="border-radius: 4px 0px 0px 4px">
-                                                <i class="fas fa-pencil-alt" title="Editar"></i>
+                                                style="border-radius: 4px 0px 0px 4px"
+                                                title="Editar">
+                                                <i class="fas fa-pencil-alt"></i>
                                             </a>
 
                                             <!-- Boton Eliminar -->
@@ -79,8 +83,11 @@
                                                 onclick="preguntar{{$herramienta->id}}(event)" id="miFormulario{{$herramienta->id}}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" style="border-radius: 0px 4px 4px 0px">
-                                                    <i class="fas fa-trash" title="Eliminar"></i>
+                                                <button type="submit" 
+                                                        class="btn btn-danger btn-sm"
+                                                        style="border-radius: 0px 4px 4px 0px" 
+                                                        title="Eliminar">
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                             <script>
