@@ -19,6 +19,8 @@
                     <h3 class="card-title">Herramientas registradas</h3>
                     
                     <div class="card-tools">
+                        <a href="{{ url('/admin/herramientas/pdf') }}" class="btn btn-warning" target="__blank">
+                            <i class="fas fa-print"></i> Reporte de Herramientas</a>
                         <a href="{{ url('/admin/herramientas/create') }}" class="btn btn-info">Crear Nuevo</a>
                     </div>
 

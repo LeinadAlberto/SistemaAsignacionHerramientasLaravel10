@@ -383,16 +383,16 @@ return [
                 ]
             ],
         ],
-        [
+        /* [
             'text' => 'Préstamos',
             'url' => 'admin/prestamos',
             'icon' => 'nav-icon fas fa-fw fa-user',
-        ],
-        [
+        ], */
+        /* [
             'text' => 'Mantenimiento',
             'url' => 'admin/mantenimiento',
             'icon' => 'nav-icon fas fa-fw fa-user',
-        ],
+        ], */
         [
             'text' => 'Configuración',
             'url' => 'admin/configuraciones',

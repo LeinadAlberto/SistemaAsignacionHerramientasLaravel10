@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Configuracion extends Model
 {
     use HasFactory;
+
+    protected $table = "configuracions"; // Nombre de la tabla en la Base de Datos
+
+    protected $fillable = [
+        "nombre",
+        "descripcion",
+        "direccion",
+        "telefono",
+        "email",
+        "web",
+        "logo"
+    ];
 }

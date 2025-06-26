@@ -43,4 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /* Un usuario puede tener múltiples asignaciones de herramientas */
+    public function asignaciones()
+    {
+        return $this->hasMany(Asignacion::class);
+    }
 }

@@ -80,6 +80,8 @@ Route::delete('/admin/categorias/{id}', [App\Http\Controllers\CategoriaControlle
 // Rutas para Herramientas
 Route::get('/admin/herramientas', [App\Http\Controllers\HerramientaController::class, 'index'])
 ->name('admin.herramienta.index')->middleware('auth');
+Route::get('/admin/herramientas/pdf', [App\Http\Controllers\HerramientaController::class, 'pdf_herramientas'])
+->name('admin.herramienta.index')->middleware('auth');
 Route::get('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'create'])
 ->name('admin.herramienta.create')->middleware('auth');
 Route::post('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'store'])
@@ -97,18 +99,9 @@ Route::delete('/admin/herramientas/{id}', [App\Http\Controllers\HerramientaContr
 Route::get('/admin/inventarios', [App\Http\Controllers\InventarioController::class, 'index'])
 ->name('admin.inventario.index')->middleware('auth');
 
-// Rutas para Herramientas
+// Rutas para Configuraciones
 Route::get('/admin/configuraciones', [App\Http\Controllers\ConfiguracionController::class, 'index'])
 ->name('admin.configuracion.index')->middleware('auth');
-Route::get('/admin/configuraciones/create', [App\Http\Controllers\ConfiguracionController::class, 'create'])
-->name('admin.configuracion.create')->middleware('auth');
+
 Route::post('/admin/configuraciones/create', [App\Http\Controllers\ConfiguracionController::class, 'store'])
 ->name('admin.configuracion.store')->middleware('auth');
-Route::get('/admin/configuraciones/{id}', [App\Http\Controllers\ConfiguracionController::class, 'show'])
-->name('admin.configuracion.show')->middleware('auth');
-Route::get('/admin/configuraciones/{id}/edit', [App\Http\Controllers\ConfiguracionController::class, 'edit'])
-->name('admin.configuracion.edit')->middleware('auth');
-Route::put('/admin/configuraciones/{id}', [App\Http\Controllers\ConfiguracionController::class, 'update'])
-->name('admin.configuracion.update')->middleware('auth');
-Route::delete('/admin/configuraciones/{id}', [App\Http\Controllers\ConfiguracionController::class, 'destroy'])
-->name('admin.configuracion.destroy')->middleware('auth');

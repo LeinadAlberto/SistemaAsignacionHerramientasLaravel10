@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Configuracion;
 use App\Models\Herramienta;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HerramientaController extends Controller
 {
@@ -113,5 +115,19 @@ class HerramientaController extends Controller
         return redirect()->route("admin.herramienta.index")
         ->with("mensaje", "Registro eliminado exitosamente")
         ->with("icono", "success");
+    }
+
+    public function pdf_herramientas() {
+        $configuracion = Configuracion::first();
+        $herramientas = Herramienta::all();
+
+        $pdf = PDF::loadView('admin.herramientas.pdf_herramientas', compact('herramientas', 'configuracion'));
+
+        $pdf->setPaper('letter', 'portrait');
+        $pdf->setOptions(['defaultFont' => 'sans-serif']);
+        $pdf->setOptions(["isHtml5ParserEnabled" => true]);
+        $pdf->setOptions(["isRemoteEnabled" => true]);
+        
+        return $pdf->stream('herramientas.pdf');
     }
 }

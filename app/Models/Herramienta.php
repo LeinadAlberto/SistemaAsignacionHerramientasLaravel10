@@ -13,4 +13,10 @@ class Herramienta extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    /* Una herramienta puede ser asignada múltiples veces (en diferentes periodos) */
+    public function asignaciones()
+    {
+        return $this->hasMany(Asignacion::class);
+    }
 }
