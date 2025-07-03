@@ -374,6 +374,20 @@ return [
             ],
         ],
         [
+            'text' => 'Asignaciones',
+            'icon' => 'nav-icon fas fa-clipboard-list',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Asignaciones',
+                    'url' => 'admin/asignaciones',
+                ],
+                [
+                    'text' => 'Crear una Asignación',
+                    'url' => 'admin/asignaciones/create',
+                ],
+            ],
+        ],
+        /* [
             'text' => 'Inventario',
             'icon' => 'nav-icon fas fa-dolly-flatbed',
             'submenu' => [
@@ -382,7 +396,7 @@ return [
                     'url' => 'admin/inventarios',
                 ]
             ],
-        ],
+        ], */
         /* [
             'text' => 'Préstamos',
             'url' => 'admin/prestamos',

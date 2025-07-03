@@ -81,7 +81,7 @@ Route::delete('/admin/categorias/{id}', [App\Http\Controllers\CategoriaControlle
 Route::get('/admin/herramientas', [App\Http\Controllers\HerramientaController::class, 'index'])
 ->name('admin.herramienta.index')->middleware('auth');
 Route::get('/admin/herramientas/pdf', [App\Http\Controllers\HerramientaController::class, 'pdf_herramientas'])
-->name('admin.herramienta.index')->middleware('auth');
+->name('admin.herramienta.pdf')->middleware('auth');
 Route::get('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'create'])
 ->name('admin.herramienta.create')->middleware('auth');
 Route::post('/admin/herramientas/create', [App\Http\Controllers\HerramientaController::class, 'store'])
@@ -105,3 +105,19 @@ Route::get('/admin/configuraciones', [App\Http\Controllers\ConfiguracionControll
 
 Route::post('/admin/configuraciones/create', [App\Http\Controllers\ConfiguracionController::class, 'store'])
 ->name('admin.configuracion.store')->middleware('auth');
+
+// Rutas para Asignaciones
+Route::get('/admin/asignaciones', [App\Http\Controllers\AsignacionController::class, 'index'])
+->name('admin.asignacion.index')->middleware('auth');
+Route::get('/admin/asignaciones/create', [App\Http\Controllers\AsignacionController::class, 'create'])
+->name('admin.asignacion.create')->middleware('auth');
+Route::post('/admin/asignaciones/create', [App\Http\Controllers\AsignacionController::class, 'store'])
+->name('admin.asignacion.store')->middleware('auth');
+Route::get('/admin/asignaciones/{id}', [App\Http\Controllers\AsignacionController::class, 'show'])
+->name('admin.asignacion.show')->middleware('auth');
+Route::get('/admin/asignaciones/{id}/edit', [App\Http\Controllers\AsignacionController::class, 'edit'])
+->name('admin.asignacion.edit')->middleware('auth');
+Route::put('/admin/asignaciones/{id}', [App\Http\Controllers\AsignacionController::class, 'update'])
+->name('admin.asignacion.update')->middleware('auth');
+Route::delete('/admin/asignaciones/{id}', [App\Http\Controllers\AsignacionController::class, 'destroy'])
+->name('admin.asignacion.destroy')->middleware('auth');
