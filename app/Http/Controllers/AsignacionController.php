@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class AsignacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $asignaciones = Asignacion::with('herramienta', 'usuario')->get();
+
+        /* return response()->json($asignaciones); */ 
+
+        return view('admin.asignaciones.index', compact('asignaciones'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AsignacionController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -35,13 +35,12 @@
                         <thead>
                             <tr class="text-center text-white" style="background-color: #343A40">
                                 <th>Nro</th>
-                                <th>Categoría</th>
-                                <th>Código</th>
-                                <th>Nombre</th>
-                                <th>Marca</th>
-                                <th>Medida</th>
-                                <th>Stock</th>
-                                <th>Imágen</th>
+                                <th>Herramienta</th>
+                                <th>Usuario</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Estado</th>
+                                <th>Observaciones</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -49,26 +48,29 @@
                             @php
                                 $contador = 1;
                             @endphp
-                            @foreach ($herramientas as $herramienta)
+                            @foreach ($asignaciones as $asignacion)
                                 <tr>
                                     <td class="text-center align-middle">{{ $contador++ }}</td>
-                                    <td class="align-middle">{{ $herramienta->categoria->nombre }}</td>
-                                    <td class="align-middle">{{ $herramienta->codigo }}</td>
-                                    <td class="align-middle">{{ $herramienta->nombre }}</td>
-                                    <td class="align-middle">{{ $herramienta->marca }}</td>
-                                    <td class="align-middle">{{ $herramienta->medida }}</td>
-                                    <td class="align-middle text-center" style="font-size: 20px;">
-                                        <span class="badge badge-warning p-2">{{ $herramienta->stock }}</span>
+                                    <td class="align-middle">{{ $asignacion->herramienta->nombre }}</td>
+                                    <td class="align-middle">{{ $asignacion->usuario->name }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($asignacion->fecha_inicio)->format('d/m/Y') }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($asignacion->fecha_fin)->format('d/m/Y') }}</td>
+                                    <td class="text-center align-middle">
+                                        @if($asignacion->estado == 'activa')
+                                            <span class="badge bg-primary" title="La herramienta está actualmente asignada">Activa</span>
+                                        @elseif($asignacion->estado == 'completada')
+                                            <span class="badge bg-success">Completada</span>
+                                        @elseif($asignacion->estado == 'cancelada')
+                                            <span class="badge bg-danger">Cancelada</span>
+                                        @endif
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <img src="{{ asset('storage/' . $herramienta->imagen ) }}" width="60px" alt="Imágen herramienta">
-                                    </td>
+                                    <td class="align-middle">{{ $asignacion->observaciones }}</td>
                                     
                                     <!-- Botones Ver, Editar y Eliminar -->
                                     <td class="text-center align-middle">
                                         <div class="btn-group" role="group">
                                             <!-- Boton Ver -->
-                                            <a href="{{ url('/admin/herramientas/' . $herramienta->id) }}" 
+                                            <a href="{{ url('/admin/asignaciones/' . $asignacion->id) }}" 
                                                 class="btn btn-sm btn-info" 
                                                 style="border-radius: 4px 0px 0px 4px"
                                                 title="Ver">
@@ -76,7 +78,7 @@
                                             </a>
 
                                             <!-- Boton Editar -->
-                                            <a href="{{ url('/admin/herramientas/' . $herramienta->id . '/edit') }}" 
+                                            <a href="{{ url('/admin/asignaciones/' . $asignacion->id . '/edit') }}" 
                                                 class="btn btn-sm btn-success" 
                                                 style="border-radius: 4px 0px 0px 4px"
                                                 title="Editar">
@@ -84,8 +86,8 @@
                                             </a>
 
                                             <!-- Boton Eliminar -->
-                                            <form action="{{ url('/admin/herramientas/' . $herramienta->id) }}" method="post"
-                                                onclick="preguntar{{$herramienta->id}}(event)" id="miFormulario{{$herramienta->id}}">
+                                            <form action="{{ url('/admin/asignaciones/' . $asignacion->id) }}" method="post"
+                                                onclick="preguntar{{$asignacion->id}}(event)" id="miFormulario{{$asignacion->id}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" 
@@ -96,7 +98,7 @@
                                                 </button>
                                             </form>
                                             <script>
-                                                function preguntar{{$herramienta->id}}(event) {
+                                                function preguntar{{$asignacion->id}}(event) {
                                                     event.preventDefault();
                                                     Swal.fire({
                                                         title: '¿Desea eliminar este registro?',
@@ -109,7 +111,7 @@
                                                         denyButtonText: 'Cancelar', 
                                                     }).then( (result) => {
                                                         if (result.isConfirmed) {
-                                                            var form = $('#miFormulario{{$herramienta->id}}');
+                                                            var form = $('#miFormulario{{$asignacion->id}}');
                                                             form.submit();
                                                         }
                                                     }); 
@@ -306,10 +308,10 @@
                 "pageLength": 5,
                 "language": {
                     "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Herramientas",
-                    "infoEmpty": "Mostrando 0 a 0 de 0 Herramientas",
-                    "infoFiltered": "(Filtrado de _MAX_ total Herramientas)",
-                    "lengthMenu": "Mostrar _MENU_ Herramientas",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Asignaciones",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 Asignaciones",
+                    "infoFiltered": "(Filtrado de _MAX_ total Asignaciones)",
+                    "lengthMenu": "Mostrar _MENU_ Asignaciones",
                     "loadingRecords": "Cargando...",
                     "processing": "Procesando...",
                     "search": "Buscador:",
