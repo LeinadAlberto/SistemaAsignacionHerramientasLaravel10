@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignacion;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Herramienta;
 
 class AsignacionController extends Controller
 {
@@ -16,51 +18,95 @@ class AsignacionController extends Controller
         return view('admin.asignaciones.index', compact('asignaciones'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        
+        $herramientas = Herramienta::all();
+
+        $usuarios = User::role('Encargado de Proyectos')->get(); // Encargados de proyecto
+
+        return view("admin.asignaciones.create", compact("herramientas" , "usuarios"));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        /* $datos = request()->all();
+
+        return response()->json($datos); */
+
+        $request->validate([
+            'herramienta_id' => 'required|exists:herramientas,id',
+            'usuario_id' => 'required|exists:users,id',
+            'fecha_inicio' => 'required|date'
+        ]);
+
+        // Verificar disponibilidad
+        $herramienta = Herramienta::find($request->herramienta_id);
+        if ($herramienta->stock < 1) {
+            return back()->with('error', 'No hay stock disponible de esta herramienta');
+        } 
+
+        // Actualizar stock
+        $herramienta->decrement('stock');
+
+        $asignacion = new Asignacion();
+
+        $asignacion->herramienta_id = $request->herramienta_id;
+        $asignacion->usuario_id = $request->usuario_id;
+        $asignacion->fecha_inicio = $request->fecha_inicio;
+        
+        $asignacion->save();
+
+        return redirect()->route("admin.asignacion.index")
+            ->with("mensaje", "Registro exitoso")
+            ->with("icono", "success"); 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Asignacion $asignacion)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Asignacion $asignacion)
+    public function edit($id)
     {
-        //
+        $asignacion = Asignacion::find($id);
+
+        $herramientas = Herramienta::all();
+
+        $usuarios = User::role('Encargado de Proyectos')->get(); // Encargados de proyecto
+
+        return view('admin.asignaciones.edit', compact('asignacion', 'herramientas', 'usuarios'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Asignacion $asignacion)
+    public function update(Request $request, $id)
     {
-        //
+        /* $datos = request()->all();
+
+        return response()->json($datos); */
+        
+        $request->validate([
+            'herramienta_id' => 'required|exists:herramientas,id',
+            'usuario_id' => 'required|exists:users,id',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio'
+        ]);
+
+        $asignacion = Asignacion::find($id);
+
+        $asignacion->herramienta_id = $request->herramienta_id;
+        $asignacion->usuario_id = $request->usuario_id;
+        $asignacion->fecha_inicio = $request->fecha_inicio;
+        $asignacion->fecha_fin = $request->fecha_fin;
+        $asignacion->observaciones = $request->observaciones;
+        
+        $asignacion->save();
+
+        return redirect()->route("admin.asignacion.index")
+            ->with("mensaje", "Modificación exitosa")
+            ->with("icono", "success");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Asignacion $asignacion)
     {
-        //
+        
     }
 }

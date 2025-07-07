@@ -24,7 +24,7 @@
                             Reporte de Herramientas
                         </a> --}}
                         <a href="{{ url('/admin/asignaciones/create') }}" class="btn btn-info">
-                            <i class="fas fa-plus-circle"></i>Nueva Asignación</a>
+                            <i class="fas fa-plus-circle mr-1"></i> Nueva Asignación</a>
                     </div>
 
                 </div><!-- /.card-header --> 
@@ -34,14 +34,14 @@
                     <table id="example1" class="table table-bordered table-hover ">
                         <thead>
                             <tr class="text-center text-white" style="background-color: #343A40">
-                                <th>Nro</th>
-                                <th>Herramienta</th>
-                                <th>Usuario</th>
-                                <th>Fecha Inicio</th>
-                                <th>Fecha Fin</th>
-                                <th>Estado</th>
-                                <th>Observaciones</th>
-                                <th>Acciones</th>
+                                <th class="align-middle">Nro</th>
+                                <th class="align-middle">Herramienta Asignada</th>
+                                <th class="align-middle">Encargado de Proyecto</th>
+                                <th class="align-middle">Fecha y Hora de Asignación</th>
+                                <th class="align-middle">Fecha y Hora de Devolución</th>
+                                <th class="align-middle">Estado</th>
+                                {{-- <th class="align-middle">Observaciones</th> --}}
+                                <th class="align-middle">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,8 +53,14 @@
                                     <td class="text-center align-middle">{{ $contador++ }}</td>
                                     <td class="align-middle">{{ $asignacion->herramienta->nombre }}</td>
                                     <td class="align-middle">{{ $asignacion->usuario->name }}</td>
-                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($asignacion->fecha_inicio)->format('d/m/Y') }}</td>
-                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($asignacion->fecha_fin)->format('d/m/Y') }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($asignacion->fecha_inicio)->isoFormat('DD/MM/YYYY HH:mm') }}</td>
+                                    <td class="text-center align-middle">
+                                        @if($asignacion->fecha_fin)
+                                            {{ \Carbon\Carbon::parse($asignacion->fecha_fin)->isoFormat('DD/MM/YYYY HH:mm') }}
+                                        @else
+                                            <span class="text-muted">Pendiente</span>
+                                        @endif
+                                    </td>
                                     <td class="text-center align-middle">
                                         @if($asignacion->estado == 'activa')
                                             <span class="badge bg-primary" title="La herramienta está actualmente asignada">Activa</span>
@@ -64,7 +70,7 @@
                                             <span class="badge bg-danger">Cancelada</span>
                                         @endif
                                     </td>
-                                    <td class="align-middle">{{ $asignacion->observaciones }}</td>
+                                    {{-- <td class="align-middle">{{ $asignacion->observaciones }}</td> --}}
                                     
                                     <!-- Botones Ver, Editar y Eliminar -->
                                     <td class="text-center align-middle">

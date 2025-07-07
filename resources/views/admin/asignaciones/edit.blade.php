@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1 class="text-center">ASIGNAR HERRAMIENTA</h1>
+    <h1 class="text-center">EDITAR ASIGNACIÓN</h1>
     <hr>
 @stop
 
@@ -33,9 +33,11 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('admin/asignaciones/create') }}" method="post">
+                    <form action="{{ url('admin/asignaciones/' . $asignacion->id) }}" method="post">
                         
                         @csrf
+
+                         @method('PUT')
 
                         <div class="row">
                             <!--  -->
@@ -53,7 +55,9 @@
                                                 <select id="herramienta_id" name="herramienta_id" class="form-control" required>
                                                     <option value="">Seleccione una herramienta</option>
                                                     @foreach ($herramientas as $herramienta)
-                                                        <option value="{{ $herramienta->id }}">{{ $herramienta->nombre }} ({{ $herramienta->codigo }}) - Stock: {{ $herramienta->stock }}</option>
+                                                        <option value="{{ $herramienta->id }}" {{ $herramienta->id == $asignacion->herramienta_id ? 'selected' : '' }}>
+                                                            {{ $herramienta->nombre }} ({{ $herramienta->codigo }}) - Stock: {{ $herramienta->stock }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -71,7 +75,9 @@
                                                 <select id="usuario_id" name="usuario_id" class="form-control" required>
                                                     <option value="">Seleccione al Encargado de Proyectos</option>
                                                     @foreach ($usuarios as $usuario)
-                                                        <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                                                        <option value="{{ $usuario->id }}" {{ $usuario->id == $asignacion->usuario_id ? 'selected' : '' }}>
+                                                            {{ $usuario->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -89,7 +95,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                                 </div><!-- /.input-group-prepend -->
-                                                <input type="datetime-local" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio') }}" required>
+                                                <input type="datetime-local" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', $asignacion->fecha_inicio) }}" required>
                                             </div><!-- /.input-group -->
                                             @error('fecha_inicio')
                                                 <small class="text-danger">{{ $message }}</small>
@@ -106,7 +112,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                                 </div><!-- /.input-group-prepend -->
-                                                <input type="datetime-local" class="form-control" id="fecha_fin" name="fecha_fin" value="{{ old('fecha_fin') }}">
+                                                <input type="datetime-local" class="form-control" id="fecha_fin" name="fecha_fin" value="{{ old('fecha_fin', $asignacion->fecha_fin) }}">
                                             </div><!-- /.input-group -->
                                             @error('fecha_fin')
                                                 <small class="text-danger">{{ $message }}</small>
@@ -124,7 +130,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                                 </div><!-- /.input-group-prepend -->
-                                                <textarea class="form-control" name="observaciones" id="observaciones" value="{{ old('fecha_inicio') }}" rows="3" required>
+                                                <textarea class="form-control" name="observaciones" id="observaciones" value="{{ old('observaciones', $asignacion->observaciones) }}" rows="3" required>
                                                     {{ old('observaciones') }}
                                                 </textarea>
                                             </div><!-- /.input-group -->
@@ -141,7 +147,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <a href="{{ url('/admin/asignaciones') }}" class="btn btn-secondary">Cancelar</a>
-                                    <button type="submit" class="btn btn-info">Registrar Asignación</button>
+                                    <button type="submit" class="btn btn-info">Modificar Asignación</button>
                                 </div>
                             </div><!-- col-md-12 -->
                         </div><!-- /.row -->
@@ -189,25 +195,5 @@
 
 
 @section('js')   
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    // Obtener la fecha y hora actual
-    const now = new Date();
     
-    // Formatear para datetime-local (YYYY-MM-DDTHH:MM)
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    
-    const datetimeLocal = `${year}-${month}-${day}T${hours}:${minutes}`;
-    
-    // Asignar al campo
-    document.getElementById('fecha_inicio').value = datetimeLocal;
-    
-    // Opcional: hacer el campo de solo lectura
-    document.getElementById('fecha_inicio').readOnly = true;
-});
-    </script>
 @stop
